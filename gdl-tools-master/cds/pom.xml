@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.gdl-lang.gdl-tools</groupId>
+        <artifactId>gdl-tools</artifactId>
+        <version>0-SNAPSHOT</version>
+    </parent>
+	<groupId>org.gdl-lang.gdl-tools</groupId>
+	<artifactId>cds</artifactId>
+	<packaging>pom</packaging>
+	<version>0-SNAPSHOT</version>
+	<name>Clinical Decision Support System</name>
+
+    <scm>
+        <connection>scm:git:git@github.com:openEHR/gdl-tools.git</connection>
+        <developerConnection>scm:git:git@github.com:openEHR/gdl-tools.git</developerConnection>
+        <url>scm:git:git@github.com:openEHR/gdl-tools.git</url>
+      <tag>HEAD</tag>
+  </scm>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.fusesource.mvnplugins</groupId>
+				<artifactId>maven-graph-plugin</artifactId>
+				<version>1.29</version>
+			</plugin>
+		</plugins>
+	</build>
+    <dependencies>
+    </dependencies>
+	<modules>
+        <module>cds-common</module>
+        <module>cds-engine-drools</module>
+        <module>cds-model</module>
+        <module>gdl-model</module>
+        <module>gdl-parser</module>
+        <module>cds-core</module>
+        <module>cds-gui-swing</module>
+        <module>cds-form-generator</module>
+        <module>gdl-graph</module>
+        <module>gdl-editor</module>
+	</modules>
+</project>

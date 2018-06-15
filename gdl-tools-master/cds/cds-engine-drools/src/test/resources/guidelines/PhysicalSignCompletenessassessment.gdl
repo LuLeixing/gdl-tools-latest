@@ -1,0 +1,165 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"PhysicalSignCompletenessassessment">
+	concept = <"gt0000">
+	language = (LANGUAGE) <
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		original_author = <
+			["name"] = <"Tianqi">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.physical_sign.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+				>
+				template_id = <"null">
+			>
+			["gt0005"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.data_quality_assessment_results.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					>
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+				>
+				template_id = <"null">
+			>
+		>
+		rules = <
+			["gt0001"] = (RULE) <
+				when = <"$gt0003==local::custom|体重|", "$gt0004|Vital item value|.null_flavor!=openehr::271|No information|">
+				then = <"$gt0009='completeness'", "$gt0007='体重'", "$gt0006.value=$gt0008.value", "$gt0012=1|local::at0008|good|">
+				priority = <1>
+			>
+			["gt0010"] = (RULE) <
+				when = <"$gt0003==local::custom|体重|", "$gt0004<'200'", "$gt0004>'0'">
+				then = <"$gt0007='体重'", "$gt0009='合理性'", "$gt0012=1|local::at0008|good|", "$gt0006.value=$gt0008.value">
+				priority = <3>
+			>
+			["gt0011"] = (RULE) <
+				when = <"$gt0003==local::custom|身高|", "$gt0004<'250'", "$gt0004<='0'">
+				then = <"$gt0012=1|local::at0008|good|", "$gt0009='合理性'", "$gt0007='身高'", "$gt0006.value=$gt0008.value">
+				priority = <2>
+			>
+			["gt0013"] = (RULE) <
+				when = <"$gt0004|Vital item value|.null_flavor!=openehr::271|No information|", "$gt0003==local::custom|身高|">
+				then = <"$gt0012=1|local::at0008|good|", "$gt0009='完整性'", "$gt0007='身高'", "$gt0006.value=$gt0008.value">
+				priority = <4>
+			>
+			["gt0014"] = (RULE) <
+				when = <"$gt0003==local::custom|收缩压|", "$gt0004|Vital item value|.null_flavor!=openehr::271|No information|">
+				then = <"$gt0012=1|local::at0008|good|", "$gt0007='收缩压'", "$gt0009='完整性'", "$gt0006.value=$gt0008.value">
+				priority = <5>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0003==local::custom|收缩压|", "$gt0004<'200'", "$gt0004>'50'">
+				then = <"$gt0007='收缩压'", "$gt0009='合理性'", "$gt0012=1|local::at0008|good|", "$gt0006.value=$gt0008.value">
+				priority = <6>
+			>
+			["gt0016"] = (RULE) <
+				when = <"$gt0003==local::custom|舒张压|", "$gt0004|Vital item value|.null_flavor!=openehr::271|No information|">
+				then = <"$gt0012=1|local::at0008|good|", "$gt0006.value=$gt0008.value", "$gt0007='舒张压'", "$gt0009='完整性'">
+				priority = <7>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0003==local::custom|舒张压|", "$gt0004<'160'", "$gt0004>'0'">
+				then = <"$gt0012=1|local::at0008|good|", "$gt0007='舒张压'", "$gt0009='合理性'", "$gt0006.value=$gt0008.value">
+				priority = <8>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0000"] = (TERM) <
+						text = <"PhysicalsignCompletenessAssessment">
+						description = <"*">
+					>
+					["gt0001"] = (TERM) <
+						text = <"WeightCompleteness">
+						description = <"*">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Vital item">
+						description = <"*">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Vital item value">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"record identifier number">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Assessment attribute name">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Record identifier">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"data quality measure name">
+						description = <"*">
+					>
+					["gt0010"] = (TERM) <
+						text = <"WeightPlausibility">
+						description = <"*">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Heightplausibility">
+						description = <"*">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Assessment reults">
+						description = <"*">
+					>
+					["gt0013"] = (TERM) <
+						text = <"HeightCompleteness">
+						description = <"*">
+					>
+					["gt0014"] = (TERM) <
+						text = <"SystolicPressureCompeleteness">
+						description = <"*">
+					>
+					["gt0015"] = (TERM) <
+						text = <"SystolicPressurePlausibility">
+						description = <"*">
+					>
+					["gt0016"] = (TERM) <
+						text = <"DiastolicPressureCompleteness">
+						description = <"*">
+					>
+					["gt0017"] = (TERM) <
+						text = <"DiastolicPressurePlausibility">
+						description = <"*">
+					>
+				>
+			>
+		>
+	>
+>
